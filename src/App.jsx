@@ -34,7 +34,6 @@ function YoutubeComponent(props){
   )
 }
 
-
 let sampleData = [
   {
     thumbnailImg: "https://via.placeholder.com/600x400",
@@ -59,39 +58,24 @@ let sampleData = [
   }
 ];
 
-function ShowTitle(){
-  let showvidTitle = sampleData.map(function(element){
-    return `${element.videoTitle}`
-  })
-}
-
-ShowTitle();
 
 function App() {
-  const listOfPokemon=[
-    "Pikachu",
-    "Dragonite",
-    "Gyrados"
-  ];
   return (
-    <div className="app-container">
-      <YoutubeComponent thumbnailImg="https://via.placeholder.com/600x400"
-      videoTitle = ShowTitle=();
-      videoUploader="Mark"
-      dateVideoUploaded="11/30/2022"/>
-      <YoutubeComponent thumbnailImg="https://via.placeholder.com/600x400"
-       videoTitle="Luis' Big Break"
-       videoUploader="Luis"
-       dateVideoUploaded="7/22/2022"/>
-      <YoutubeComponent thumbnailImg="https://via.placeholder.com/600x400"
-       videoTitle="How To Make A Taco"
-       videoUploader="CookingMama"
-       dateVideoUploaded="10/22/2022"/>
-       <ul>
-        <li>{listOfPokemon.find(pokemon =>pokemon === "Pikachu")}</li>
-        {listOfPokemon.map(pokemon =>(<li>{pokemon}</li>))}
-       </ul>
-       <ConditionalComponent showComponent1={false}/>
+    <div className='app-container'>
+      {
+        sampleData.map(element=>{
+          return  <YoutubeComponent
+           thumbnailImg={element.thumbnailImg} 
+           videoTitle={element.videoTitle}
+           videoUploader={element.videoUploader}
+           dateVideoUploaded={element.dateVideoUploaded}
+           videoViews={element.videoViews}
+           />
+        })
+      }
+      <YoutubeComponent/>
+      <YoutubeComponent/>
+      <YoutubeComponent/>
     </div>
   )
 }
